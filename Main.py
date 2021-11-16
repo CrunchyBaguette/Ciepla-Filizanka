@@ -82,7 +82,7 @@ class LoginPage(tk.Frame):
         entry1.configure(foreground="#000000")
         entry1.configure(insertbackground="black")
 
-        entry2 = tk.Entry(self)
+        entry2 = tk.Entry(self, show="*")
         entry2.place(x=160, y=160, height=20, width=264)
         entry2.configure(background="white")
         entry2.configure(disabledforeground="#a3a3a3")

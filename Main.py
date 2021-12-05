@@ -929,7 +929,7 @@ class CartPage(tk.Frame):
     def inputDefaultAddress(self, entries):
         entries[0].insert(0, userData["address"]["street"])
         entries[1].insert(0, userData["address"]["number"])
-        if "address" in userData["address"].keys():
+        if "apartment" in userData["address"].keys():
             entries[2].insert(0, userData["address"]["apartment"])
         entries[3].insert(0, userData["address"]["city"])
         entries[4].insert(0, userData["address"]["ZIP"])

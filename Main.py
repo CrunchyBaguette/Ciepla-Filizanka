@@ -579,10 +579,6 @@ class AddEmployeePage(tk.Frame):
         messageLabel.configure(text="Pomyślnie dodano pracownika")
 
 
-
-
-
-
 class CartPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -598,8 +594,8 @@ class CartPage(tk.Frame):
             itemData = db["items"].find_one({"_id": item["itemId"]}, {"_id": 1, "name": 1, "price": 1})
             orderPrice += item["itemCount"] * itemData["price"]
             itemsDict.append({"name": itemData["name"], "price": itemData["price"], "count": item["itemCount"],
-                              "total price": round(item["itemCount"] * itemData["price"], 2),
-                              "itemId": itemData["_id"]})
+                            "total price": round(item["itemCount"] * itemData["price"], 2),
+                            "itemId": itemData["_id"]})
 
         orderPrice = round(orderPrice, 2)
         db["orders"].update_one({
@@ -933,7 +929,7 @@ class CartPage(tk.Frame):
     def inputDefaultAddress(self, entries):
         entries[0].insert(0, userData["address"]["street"])
         entries[1].insert(0, userData["address"]["number"])
-        if "address" in userData["address"].keys():
+        if "apartment" in userData["address"].keys():
             entries[2].insert(0, userData["address"]["apartment"])
         entries[3].insert(0, userData["address"]["city"])
         entries[4].insert(0, userData["address"]["ZIP"])
@@ -962,6 +958,7 @@ class CartPage(tk.Frame):
                 "orderDate": datetime.datetime.now().replace(microsecond=0)
             }
         })
+        items = db['orders'].find_one({"_id": cartId, "status": "przyjęte"})["itemList"]
 
         orderDesc = CreateOrderText(str(cartId))
 
@@ -980,6 +977,13 @@ class CartPage(tk.Frame):
             "totalPrice": 0.0,
             "status": "koszyk",
         })
+
+        for item in items:
+            db["items"].update_one({"_id": item['itemId']}, {
+                "$inc" : {
+                    "quantity": -item['itemCount']
+                }
+            })
 
         enable_frame(self)
         cont.show_frame(CartPage)
@@ -2048,6 +2052,7 @@ def addToCart(top, spinbox, item, cont, page):
                 top.destroy()
                 messageString = "Dodano " + item[0] + " do koszyka"
                 cont.show_frame(page)
+
 
 def CreateOrderText(orderId):
     finalText = "OPIS ZAMÓWIENIA\n\nSKŁAD ZAMÓWIENIA\n"

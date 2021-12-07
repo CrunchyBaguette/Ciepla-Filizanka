@@ -4,15 +4,15 @@ Aplikacja sklepu interentowego z kawą i herbatą wykorzystująca mongoDB
 
 wymagane biblioteki: pymongo, dnspython
 
-Przykładowe konta użytkowników:
-  Klienci:
-    a) email: krzysztofbogaczyk@gmail.com\n
-       hasło: krzysztof1234
-    b) email: kowalewski@wp.pl
-       hasło: kowalewski1234
-  Pracownicy:
-    a) email: barmar96@wp.pl
-       hasło: barmar123
-  Właściciel:
-    a) email: zygmal@wp.pl
-       hasło: tajnehaslo70
+Przykładowe konta użytkowników:<br>
+  Klienci:<br>
+    a) email: krzysztofbogaczyk@gmail.com<br>
+       hasło: krzysztof1234<br>
+    b) email: kowalewski@wp.pl<br>
+       hasło: kowalewski1234<br>
+  Pracownicy:<br>
+    a) email: barmar96@wp.pl<br>
+       hasło: barmar123<br>
+  Właściciel:<br>
+    a) email: zygmal@wp.pl<br>
+       hasło: tajnehaslo70<br>

@@ -6,7 +6,7 @@ wymagane biblioteki: pymongo, dnspython
 
 Przykładowe konta użytkowników:
   Klienci:
-    a) email: krzysztofbogaczyk@gmail.com
+    a) email: krzysztofbogaczyk@gmail.com\n
        hasło: krzysztof1234
     b) email: kowalewski@wp.pl
        hasło: kowalewski1234
